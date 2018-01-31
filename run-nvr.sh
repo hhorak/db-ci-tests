@@ -24,7 +24,7 @@ done
 createrepo_c .
 popd
 
-cat >/etc/yum.repos.d/db-ci.repo <<<EOF
+cat >/etc/yum.repos.d/db-ci.repo <<EOF
 [db-ci]
 name=db-ci
 baseurl=file://${repodir}
