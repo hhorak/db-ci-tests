@@ -9,4 +9,4 @@ source ${THISDIR}/../../../common/functions.sh
 source ${THISDIR}/../include.sh
 
 set -e
-yum -y remove `get_all_packages_in_repo "${PACKAGE}"`
+dnf -y remove `get_all_packages_in_repo "${PACKAGE}"`

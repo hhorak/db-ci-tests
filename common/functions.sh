@@ -33,7 +33,7 @@ get_all_packages_in_repo() {
   fi
 }
 
-# generate a yum repo file for downloaded data and write it to stdout
+# generate a dnf repo file for downloaded data and write it to stdout
 # accepts these possitional arguments:
 # * package name
 # * el_version (24, 25, ...), optional
@@ -48,7 +48,7 @@ generate_repo() {
   el_version="${2-`os_major_version`}"
   repo_name=$(get_repo_name "${el_version}" "${repotype}")
   if [ "$repotype" == "mirror" ] ; then
-    yum -y install fedora-repos-${el_version}
+    dnf -y install fedora-repos-${el_version}
   else
     repofile=/etc/yum.repos.d/${REPOFILE-db-ci.repo}
     repodir=/var/tmp/db-ci-test-repo
@@ -69,7 +69,7 @@ gpgcheck=0
 enabled=1
 
 EOM
-    yum clean all --disablerepo=\* --enablerepo=${repo_name}
+    dnf clean all --disablerepo=\* --enablerepo=${repo_name}
   fi
 }
 
@@ -85,7 +85,7 @@ exit_fail() {
 
 # install basic tools that are usually needed for building other SW
 install_build_tools() {
-  yum -y install \
+  dnf -y install \
       bash bzip2 coreutils cpio diffutils findutils gawk gcc gcc-c++ grep \
       gzip info make patch redhat-rpm-config rpm-build sed shadow-utils \
       tar unzip util-linux-ng wget which iso-codes

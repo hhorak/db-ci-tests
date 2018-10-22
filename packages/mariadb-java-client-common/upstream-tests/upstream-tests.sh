@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y mariadb-java-client mariadb-java-client-tests hamcrest junit mariadb-server unzip
+dnf install -y mariadb-java-client mariadb-java-client-tests hamcrest junit mariadb-server unzip
 
 # list all available test classes
 MARIADB_TESTS="$(unzip -Z1 $JAVA_LIBRARY_TESTS | grep 'Test.class' | cut -d'.' -f1 | tr '/' '.' | sort)"

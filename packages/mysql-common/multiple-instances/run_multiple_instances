@@ -20,8 +20,8 @@ service ${SERVICE_NAME} stop || :
 
 CONFIG_DIR=${SYSCONF_DIR}/my.cnf.d
 
-yum -y install ${INSTALL_PKGS} libselinux-utils
-yum -y install policycoreutils-python || yum -y install policycoreutils-python-utils
+dnf -y install ${INSTALL_PKGS} libselinux-utils
+dnf -y install policycoreutils-python || dnf -y install policycoreutils-python-utils
 
 # clean default config that might be taken into account,
 # because order is not defined in configuration files reading
@@ -68,5 +68,5 @@ for instance in 1 2 3 ; do
   rm -f ${CONFIG_DIR}/my-server$instance.cnf
 done
 
-yum reinstall -y ${INSTALL_PKGS}\*
+dnf reinstall -y ${INSTALL_PKGS}\*
 
