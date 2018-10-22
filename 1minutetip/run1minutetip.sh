@@ -24,7 +24,7 @@ cat >${test_dir}/runtest.sh <<EOF
 set -x
 echo PASS >/tmp/1minutetip.result
 
-yum -y install koji createrepo wget vim
+dnf -y install koji createrepo wget vim
 
 pushd db-ci-tests
 tar xfz db-ci-tests.tar.gz

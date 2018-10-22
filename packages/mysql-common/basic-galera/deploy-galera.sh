@@ -18,7 +18,7 @@ GARBD_CONFIG=${SYSCONF_DIR}/sysconfig/garb
 IPS=$(hostname -I)
 IP=${IPS%% *}
 
-yum -y install ${GALERA_PKGS}
+dnf -y install ${GALERA_PKGS}
 cat >"${CONFIG_DIR}"/my-galera.cnf <<EOF
 [mysqld]
 wsrep_cluster_address="gcomm://${IP}"
