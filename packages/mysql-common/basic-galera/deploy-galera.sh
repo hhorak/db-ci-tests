@@ -53,13 +53,16 @@ wsrep_provider_options='base_port=14567;'
 # this instance is used, so we should keep default port 4444 for selinux purposes
 wsrep_sst_receive_address=${IP}
 
-wsrep_provider_options='ist.recv_addr=${IP}:2888;'
+wsrep_provider_options='ist.recv_addr=${IP}:14568;'
 wsrep_node_address=${IP}:14567
 
 datadir=${DATA_DIR2}
 socket=${SOCKET2}
 port=3307
 EOF
+
+# The port to listen on for Incremental State Transfer (ist.recv_addr) must be allowed
+semanage port -a -t mysqld_port_t -p tcp 14568
 
 [ -d "${DATA_DIR2}" ] && rm -rf "${DATA_DIR2}"/*
 mysql_install_db --rpm --datadir="${DATA_DIR2}" --user=mysql
