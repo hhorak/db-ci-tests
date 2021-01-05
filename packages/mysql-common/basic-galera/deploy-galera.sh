@@ -62,7 +62,7 @@ port=3307
 EOF
 
 # The port to listen on for Incremental State Transfer (ist.recv_addr) must be allowed
-semanage port -a -t mysqld_port_t -p tcp 14568
+semanage port -a -t mysqld_port_t -p tcp 14568 || :
 
 [ -d "${DATA_DIR2}" ] && rm -rf "${DATA_DIR2}"/*
 mysql_install_db --rpm --datadir="${DATA_DIR2}" --user=mysql
